@@ -11,7 +11,8 @@
 #include "MK64F12.h" /* include peripheral declarations */
 #include "NVIC.h"/**NVIC device driver*/
 #include "stdio.h"
-
+#include "UART.h"
+#include "TeraTerm.h"
 
 /**This is mail box to received the information from the serial port*/
 extern UART_MailBoxType UART0_MailBox;
@@ -35,7 +36,9 @@ int main(void)
 
 		/**Enables interrupts*/
 	EnableInterrupts;
+	TeraTerm_paint_init();
     while(1) {
+    	TeraTerm_draw();
 
     }
     return 0 ;

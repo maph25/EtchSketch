@@ -12,6 +12,18 @@ UART_MailBoxType UART0_MailBox = {0};
 uint16_t baudRate;
 uint8_t temp;
 
+uint8 UART_mailbox_return(){
+	uint8 getMail;
+	getMail = UART0_MailBox.mailBox;
+	return getMail;
+}
+
+uint8 UART_flag_return(){
+	uint8 getFlag;
+	getFlag = UART0_MailBox.flag;
+	return getFlag;
+}
+
 void UART_init(UART_ChannelType uartChannel, uint32 system_clock, UART_BaudRateType baud_rate){
 	baudRate = (system_clock)/(baud_rate * MULT);
 	temp = (system_clock/(baud_rate * MULT) - baudRate)*MULT_2;
@@ -120,7 +132,7 @@ void UART_interruptEnable(UART_ChannelType uartChannel){
 	}
 }
 
-void UART_putChar (UART_ChannelType uartChannel, uint8 character)
+void UART_put_char (UART_ChannelType uartChannel, uint8 character)
 {
 	switch(uartChannel){
 	case UART_0:{
@@ -162,36 +174,36 @@ void UART_putChar (UART_ChannelType uartChannel, uint8 character)
 }
 
 
-void UART_putString(UART_ChannelType uartChannel, sint8* string){
+void UART_put_string(UART_ChannelType uartChannel, sint8* string){
 	switch(uartChannel){
 		case UART_0:{
 			if(*string)
-				UART_putChar(uartChannel, *string++);
+				UART_put_char(uartChannel, *string++);
 			break;
 		}
 		case UART_1:{
 			if(*string)
-				UART_putChar(uartChannel, *string++);
+				UART_put_char(uartChannel, *string++);
 			break;
 		}
 		case UART_2:{
 			if(*string)
-				UART_putChar(uartChannel, *string++);
+				UART_put_char(uartChannel, *string++);
 			break;
 		}
 		case UART_3:{
 			if(*string)
-				UART_putChar(uartChannel, *string++);
+				UART_put_char(uartChannel, *string++);
 			break;
 		}
 		case UART_4:{
 			if(*string)
-				UART_putChar(uartChannel, *string++);
+				UART_put_char(uartChannel, *string++);
 			break;
 		}
 		case UART_5:{
 			if(*string)
-				UART_putChar(uartChannel, *string++);
+				UART_put_char(uartChannel, *string++);
 			break;
 		}
 	}

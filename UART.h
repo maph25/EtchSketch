@@ -36,6 +36,10 @@ typedef enum {UART_0,UART_1,UART_2,UART_3,UART_4,UART_5}UART_ChannelType;
  */
 typedef enum {BD_4800=4800,BD_9600=9600,BD_5600=5600, BD_115200=115200}UART_BaudRateType;
 
+/*Gets values from the mailbox, used for reading from TeraTerm and writing in memory*/
+uint8 UART_mailbox_return();
+uint8 UART_flag_return();
+
 /********************************************************************************************/
 /********************************************************************************************/
 /********************************************************************************************/
@@ -83,7 +87,7 @@ void UART_interruptEnable(UART_ChannelType uartChannel);
  	 \return void
  */
 
-void UART_putChar (UART_ChannelType uartChannel, uint8 character);
+void UART_put_char (UART_ChannelType uartChannel, uint8 character);
 /********************************************************************************************/
 /********************************************************************************************/
 /********************************************************************************************/
@@ -93,6 +97,6 @@ void UART_putChar (UART_ChannelType uartChannel, uint8 character);
  	 \param[in]  string pointer to the string to be transmitted.
  	 \return void
  */
-void UART_putString(UART_ChannelType uartChannel, sint8* string);
+void UART_put_string(UART_ChannelType uartChannel, sint8* string);
 
 #endif /* UART_H_ */
